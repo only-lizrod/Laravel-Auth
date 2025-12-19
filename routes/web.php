@@ -2,6 +2,22 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Socialite;
+
+use App\Http\Controllers\GoogleAuthController;
+
+Route::get('/auth/google', [GoogleAuthController::class, 'redirect'])->name('google-auth');
+Route::get('/auth/google/call-back', [GoogleAuthController::class, 'callbackGoogle']);
+/*
+Route::get('/google-auth/redirect'function(){
+    return Socialite::driver('google')->redirect();
+});
+
+Route::get('/google-auth/callback'function(){
+    $user = Socialite::driver('google')->redirect();
+});
+*/
+
 
 Route::get('/', function () {
     return view('welcome');
